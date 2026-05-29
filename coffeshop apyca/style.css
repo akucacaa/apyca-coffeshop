@@ -1,0 +1,150 @@
+/* =========================================
+   BASE STYLES & SCROLLBAR
+   ========================================= */
+body {
+    background-color: #FFF0F5; 
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbar (Webkit: Chrome, Safari, Edge) */
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+
+::-webkit-scrollbar-track { 
+    background: #FFF0F5; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #FFB7B2; 
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover { 
+    background: #FF9E99; 
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATION
+   ========================================= */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.8s ease-out; 
+}
+
+.reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* =========================================
+   NAVBAR GLASSMORPHISM
+   ========================================= */
+.glass-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* =========================================
+   HERO SECTION TYPOGRAPHY
+   ========================================= */
+/* Mobile: Pink Glow for text readability over image */
+.hero-text-glow {
+    text-shadow: 0 0 15px rgba(255, 183, 178, 0.5); 
+}
+
+/* Desktop: White Outline for readability over light background */
+@media (min-width: 768px) {
+    .hero-text-glow {
+        text-shadow: none; 
+        -webkit-text-stroke: 2px #FFF0F5; 
+        paint-order: stroke fill;
+        color: #6B5B5B;
+    }
+}
+
+/* =========================================
+   MENU & PREVIEW CARDS
+   ========================================= */
+/* Horizontal Menu Card */
+.menu-card-creative {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-card-creative:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px -10px rgba(255, 183, 178, 0.5);
+}
+
+.menu-card-creative:hover img {
+    transform: scale(1.1);
+}
+
+/* Vertical Preview Card (Best Seller) */
+.best-seller-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.best-seller-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid #FFB7B2;
+    border-radius: 1.5rem;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+    pointer-events: none;
+}
+
+.best-seller-card:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.best-seller-card:hover img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* =========================================
+   MODAL ANIMATIONS
+   ========================================= */
+.modal-creative {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* State Hidden (Closed) */
+.modal-creative.hidden-modal {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.95) translateY(20px);
+}
+
+/* State Visible (Open) */
+.modal-creative.visible-modal {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1) translateY(0);
+}
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
